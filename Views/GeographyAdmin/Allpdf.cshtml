@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "All pdf";
+}
+
+<h1>"All pdf Geography</h1>
+</br>
+
+@model IEnumerable<researchOnlineWebsite.Models.ResearchContent>
+@{
+    ViewData["Title"] = "All Geography Research";
+}
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResearchPdf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialize)
+            </th>
+       
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResearchPdf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialize)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<researchOnlineWebsite.Models.ResearchContent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Researches pdf</h1>
+
+<p>
+    <a class="btn btn-warning" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResearchPdf)
+            </th>
+            
+
+            <th>
+                @Html.DisplayNameFor(model => model.Specialize)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.StatId)
+            </th>*@
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResearchPdf)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ResearchPdfUrl)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialize)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.StatId)
+            </td>*@
+            <td>
+
+                <a asp-action="Edit" asp-route-id="@item.ResearchId">Edit</a> |
+                <a  asp-action="Details" asp-route-id="@item.ResearchId">Details</a> |
+                <a  asp-action="Delete" asp-route-id="@item.ResearchId">Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

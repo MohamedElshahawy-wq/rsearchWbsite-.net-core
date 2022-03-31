@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "login";
+}
+
+<h1>login Admins</h1>
+
+<form asp-action="Login">
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <input name="em" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="pa" class="control-label">Password</label>
+        <input name="pa" type="password" class="form-control" /> <br />
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary" />
+
+    <input type="button" value="Create" onclick="location.href='@Url.Action("Index", "Admins")'" />
+
+    <p style="color:red"> @ViewData["message"]</p>
+    <p style="color:red"> @ViewData["message1"]</p>
+
+</form>

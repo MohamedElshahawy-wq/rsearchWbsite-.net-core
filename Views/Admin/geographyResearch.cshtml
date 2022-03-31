@@ -1,0 +1,93 @@
+﻿@model IEnumerable<researchOnlineWebsite.Models.Research>
+@{
+    ViewData["Title"] = "All Geography Research";
+}
+<h1>Admin Control</h1>
+</br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfPage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.RedirectTo)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Stat)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>*@
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfPage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Date)*@
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ModifiedDate)*@
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.RedirectTo)
+                    </td>*@
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Price)*@
+                @Convert.ToString(string.Format("{0:C0}", item.Price))
+            </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Stat.StatusId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserId)
+                    </td>*@
+                <td>
+                    @*<button class="btn btn-primary">Redirect To Geography Admin</button>*@
+                    <a class="btn btn-danger" asp-for="ResearchId" asp-controller="Admin" asp-action="redirectToGeographyAdmin" asp-route-ResearchId="@item.ResearchId">Redirect To Geography Admin</a>
+                    @*<a asp-action="Details" asp-route-id="@item.ResearchId">Details</a>*@
+                    @*<a asp-action="Delete" asp-route-id="@item.ResearchId">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

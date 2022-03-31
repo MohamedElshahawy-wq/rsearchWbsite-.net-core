@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "geographyAdminResearch";
+}
+
+<h1>geography Admin Research</h1>
+</br>
+
+@model IEnumerable<researchOnlineWebsite.Models.Research>
+@{
+    ViewData["Title"] = "All Geography Research";
+}
+
+</br>
+<a class="btn btn-warning" asp-controller="researchcontents" asp-action="Create">Create New</a>
+</br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfPage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.RedirectTo)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Stat)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>*@
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfPage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Date)*@
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Specialize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.ModifiedDate)*@
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.ModifiedDate))
+
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.RedirectTo)
+                    </td>*@
+                <td>
+                    @{
+                        @*@Convert.ToString(string.Format("{0:C0}", item.Price))*@
+
+                        var result = item.Price / 4;
+                        @Convert.ToString(string.Format("{0:C0}", result))
+                        @*@Html.DisplayFor(modelItem => item.Price)*@
+                        @*<span>@result</span>*@
+                    }
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Stat.StatusId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserId)
+                    </td>*@
+                <td class="d-flex">
+                    <a class="btn btn-primary mr-3" asp-for="ResearchId" asp-controller="GeographyAdmin" asp-action="Approve" asp-route-ResearchId="@item.ResearchId">Approve</a>
+                    <a class="btn btn-dark mr-3" asp-for="ResearchId" asp-controller="GeographyAdmin" asp-action="Done" asp-route-ResearchId="@item.ResearchId">Done</a>
+                    <a class="btn btn-danger mr-3" asp-for="ResearchId" asp-controller="GeographyAdmin" asp-action="Cancel" asp-route-ResearchId="@item.ResearchId">Cancel</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
